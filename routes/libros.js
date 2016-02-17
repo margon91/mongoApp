@@ -25,7 +25,7 @@ router.route('/libros')
 		});
 	});
 
-router.route('libros/:titulo').put(function(req, res) {
+router.route('/libros/:titulo').put(function(req, res) {
 	Libro.findOne({titulo: req.params.titulo}, function(err, libro) {
 		if(err) {
 			return res.send(err);
@@ -39,11 +39,11 @@ router.route('libros/:titulo').put(function(req, res) {
 				return res.send(err);
 			}
 
-			res.send({ message: 'Libro added'});
+			res.send({ message: 'Libro modified'});
 		});
 	});
 });
-router.route('libros/:titulo').get(function(req, res) {
+router.route('/libros/:titulo').get(function(req, res) {
 	Libro.findOne({titulo: req.params.titulo}, function(err, libro) {
 		if(err) {
 			return res.send(err);
@@ -51,7 +51,7 @@ router.route('libros/:titulo').get(function(req, res) {
 		res.json(libro);
 	});
 });
-router.route('libros/:titulo').delete(function(req, res) {
+router.route('/libros/:titulo').delete(function(req, res) {
 	Libro.remove({titulo: req.params.titulo}, function(err, libro) {
 		if(err) {
 			return res.send(err);
